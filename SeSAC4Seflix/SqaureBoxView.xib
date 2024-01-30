@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SqaureBoxView" customModule="SeSAC4Seflix" customModuleProvider="target">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="30"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="posterImageView" destination="oXL-Kc-CFI" id="tkh-kc-eqH"/>
+                <outlet property="titleLabel" destination="6iI-sA-vpd" id="Gsr-n9-L4L"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Fm5-cC-dzK">
+            <rect key="frame" x="0.0" y="0.0" width="331" height="497"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oXL-Kc-CFI">
+                    <rect key="frame" x="8" y="8" width="315" height="433"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iI-sA-vpd">
+                    <rect key="frame" x="8" y="449" width="315" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="vGN-eC-UwS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="B1j-gn-ZUW"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="B1j-gn-ZUW" firstAttribute="trailing" secondItem="oXL-Kc-CFI" secondAttribute="trailing" constant="8" id="EzF-Eg-dvX"/>
+                <constraint firstItem="6iI-sA-vpd" firstAttribute="top" secondItem="oXL-Kc-CFI" secondAttribute="bottom" constant="8" id="O2s-p3-Xjz"/>
+                <constraint firstItem="6iI-sA-vpd" firstAttribute="bottom" secondItem="B1j-gn-ZUW" secondAttribute="bottom" constant="8" id="Xac-gV-yYk"/>
+                <constraint firstItem="6iI-sA-vpd" firstAttribute="leading" secondItem="B1j-gn-ZUW" secondAttribute="leading" constant="8" id="l09-Yq-Npu"/>
+                <constraint firstItem="oXL-Kc-CFI" firstAttribute="top" secondItem="Fm5-cC-dzK" secondAttribute="top" constant="8" id="lz0-yy-Tqa"/>
+                <constraint firstItem="B1j-gn-ZUW" firstAttribute="trailing" secondItem="6iI-sA-vpd" secondAttribute="trailing" constant="8" id="s84-Oh-1by"/>
+                <constraint firstItem="oXL-Kc-CFI" firstAttribute="leading" secondItem="B1j-gn-ZUW" secondAttribute="leading" constant="8" id="yVp-Yu-q5F"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-1939.6946564885495" y="189.08450704225353"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
