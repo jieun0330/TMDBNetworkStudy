@@ -23,13 +23,13 @@ class HomeViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        configureHierachy()
+        configureHierarchy()
         configureView()
         configureConstraints()
 
     }
     
-    func configureHierachy() {
+    func configureHierarchy() {
         [logoImageView, emailField, passwordField, sampleLabel].forEach {
             view.addSubview($0)
         }

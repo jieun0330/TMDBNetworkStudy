@@ -19,13 +19,13 @@ class SearchCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         // 순서가 중요한 이유
-        configureHierachy()
+        configureHierarchy()
         configureConstraints()
         configureView()
         
     }
     
-    func configureHierachy() {
+    func configureHierarchy() {
         [posterImageView, titleLabel].forEach {
             contentView.addSubview($0)
         }
