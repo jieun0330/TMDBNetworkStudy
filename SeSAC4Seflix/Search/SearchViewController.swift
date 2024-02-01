@@ -67,34 +67,62 @@ class SearchViewController: UIViewController {
         // 알바생이 또 다른 알바생을 품고있는거임
         
         group.enter() // 나 들어갈게? // +1 // 체크리스트라고 생각하면 됨 // 이거 해야됨 // 나 이거 할게~?
-        TMDBAPIManager.shared.fetchTrendingMovie { movie in
+        TMDBAPIManager.shared.fetchMovie(api: .trending) { movie in
             self.list = movie
-            group.leave() // -1 // 끝냄 // 알바생한테 다 했다고 알려주는거임
+            group.leave() // -1 // 끝냄 // 알바생한테 다 했다고 알려주는거임<#code#>
         }
+        
+        
+//        TMDBAPIManager.shared.fetchTrendingMovie { movie in
+//            self.list = movie
+//            group.leave() // -1 // 끝냄 // 알바생한테 다 했다고 알려주는거임
+//        }
         //        }
+        
+        
+        
         
         //        DispatchQueue.global().async(group: group) {
         group.enter()
-        TMDBAPIManager.shared.fetchMovieImages(id: 157336) { poster in
+        
+        TMDBAPIManager.shared.fetchMovieImages(api: .photo(id: 157336)) { poster in
             self.imageList[1] = poster
             group.leave()
         }
-        //        }
         
+        
+//        TMDBAPIManager.shared.fetchMovieImages(id: 157336) { poster in
+//            self.imageList[1] = poster
+//            group.leave()
+//        }
+        //        }
+    
         //        DispatchQueue.global().async(group: group) {
         group.enter()
-        TMDBAPIManager.shared.fetchMovieImages(id: 11036) { poster in
+        
+        TMDBAPIManager.shared.fetchMovieImages(api: .photo(id: 11036)) { poster in
             self.imageList[2] = poster
             group.leave()
         }
+        
+//        TMDBAPIManager.shared.fetchMovieImages(id: 11036) { poster in
+//            self.imageList[2] = poster
+//            group.leave()
+//        }
         //        }
         
         //        DispatchQueue.global().async(group: group) {
         group.enter()
-        TMDBAPIManager.shared.fetchMovieImages(id: 46705) { poster in
+        TMDBAPIManager.shared.fetchMovieImages(api: .photo(id: 46705)) { poster in
             self.imageList[3] = poster
             group.leave()
         }
+        
+        
+//        TMDBAPIManager.shared.fetchMovieImages(id: 46705) { poster in
+//            self.imageList[3] = poster
+//            group.leave()
+//        }
         //        }
         
         group.notify(queue: .main) {

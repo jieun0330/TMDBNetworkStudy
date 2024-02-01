@@ -15,14 +15,15 @@ enum TMDBAPI {
     // URL
     // case는 고유해야한다, rawValue가 겹치면 안됨 알지???? 안다고해
     case trending
-    case search
-    case photo
+    case search(query: String)
+    // 매개변수를 만들어준다!? -> 열거형의 연관값이라고 한다
+    case photo(id: Int)
     
     
     // 오류가 나는 이유는 -> 열거형은 저장 프로퍼티가 될 수 없다,
     // 저장 프로퍼티 & 인스턴스 프로퍼티
     // 인스턴스를 만들어야 만들 수 있는데 ->인스턴스가 만들지 않았으니 -> static & 연산
-//    let baseURL = "https://api.themoviedb.org/3/"
+    //    let baseURL = "https://api.themoviedb.org/3/"
     // 연산
     var baseURL: String {
         return "https://api.themoviedb.org/3/"
@@ -34,9 +35,9 @@ enum TMDBAPI {
             return URL(string: baseURL + "trending/movie/week")!
         case .search:
             return URL(string: baseURL + "search/movie")!
-        case .photo:
-            return URL(string: baseURL + "movie/123123/images")!
-
+        case .photo(let id):
+            return URL(string: baseURL + "movie/\(id)/images")!
+            
         }
     }
     
@@ -49,4 +50,15 @@ enum TMDBAPI {
         return .get
     }
     
+    var parameter: Parameters {
+        switch self {
+        case .trending:
+            ["": ""]
+        case .search(let query):
+            ["language": "ko-KR", "query": query]
+        case .photo:
+            ["": ""]
+        }
+        
+    }
 }

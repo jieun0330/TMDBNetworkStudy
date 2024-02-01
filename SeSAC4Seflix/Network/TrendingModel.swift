@@ -26,7 +26,7 @@ struct Movie: Decodable {
     let title: String
     let original: String // 그냥 Original 로 쓰고싶다면?
     let overview: String
-    let poster: String
+    let poster: String?
     let backdrop: String?
     // 서버에서 영화가 몇위인진 알 수 없지만 -> 우리가 명시시켜줄 수 있다?
 //    let top10: String?

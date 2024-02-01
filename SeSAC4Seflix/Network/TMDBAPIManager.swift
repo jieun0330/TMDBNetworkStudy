@@ -16,9 +16,14 @@ class TMDBAPIManager {
     let header: HTTPHeaders = ["Authorization": APIKey.tmdb]
     let baseURL = "https://api.themoviedb.org/3/"
     
-    func searchMovie(query: String, completionHandler: @escaping ([Movie]) -> Void) {
+    
+    
+    // 밑에꺼랑 똑같음
+//    func searchMovie(query: String, completionHandler: @escaping ([Movie]) -> Void) {
+//    func searchMovie(api: TMDBAPI, completionHandler: @escaping ([Movie]) -> Void) {
+
         
-        let url = baseURL + "search/movie?language=ko-KR&query=\(query)"
+//        let url = baseURL + "search/movie?language=ko-KR&query=\(query)"
         
         // 값을 확인했으니까 원래 상태 코드로,,?
         //        AF
@@ -28,30 +33,40 @@ class TMDBAPIManager {
         //                print(response)
         //                print(response.result)
         //            }
-        
-        AF
-            .request(url, headers: header)
-            .responseDecodable(of: TrendingModel.self) { response in
-                switch response.result {
-                case .success(let success):
-                    print("success", success)
-                    
-                    completionHandler(success.results) // 클로저 안에 클로저에 있는걸 꺼내기 위해서는 @escaping
-                    
-                case .failure(let failure):
-                    print("fail", failure)
-                }
-            }
-    }
+//        
+//        AF
+//            .request(api.endpoint,
+//                     method: api.method,
+//                     parameters: api.parameter,
+//                     encoding: URLEncoding(destination: .queryString),
+//                     headers: api.header)
+//            .responseDecodable(of: TrendingModel.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    print("success", success)
+//                    
+//                    completionHandler(success.results) // 클로저 안에 클로저에 있는걸 꺼내기 위해서는 @escaping
+//                    
+//                case .failure(let failure):
+//                    print("fail", failure)
+//                }
+//            }
+//    }
     
     // 이 메서드 안에서는 모든 값을 리턴을 해야 하기 때문에 return으로 하기 어렵다 ?
-    func fetchTrendingMovie(completionHandler: @escaping (([Movie]) -> Void)) {
+    func fetchMovie(api: TMDBAPI, completionHandler: @escaping (([Movie]) -> Void)) {
         
         // url 주소도 아래꺼랑 3까지는 똑같음
-        let url = "\(baseURL)trending/movie/week?language=ko-KR"
+//        let url = "\(baseURL)trending/movie/week?language=ko-KR"
         
+        
+        // parmaeters: HTTP Body, Query String
         AF
-            .request(url, headers: header)
+            .request(api.endpoint,
+                     method: api.method,
+                     parameters: api.parameter,
+                     encoding: URLEncoding(destination: .queryString),
+                     headers: api.header)
             .responseDecodable(of: TrendingModel.self) { response in
                 switch response.result {
                 case .success(let success):
@@ -66,11 +81,11 @@ class TMDBAPIManager {
     }
     
     // 인스턴스 메서드
-    func fetchMovieImages(id: Int, completionHandler: @escaping (PosterModel) -> Void) {
-        let url = "\(baseURL)movie/\(id)/images"
+    func fetchMovieImages(api: TMDBAPI, completionHandler: @escaping (PosterModel) -> Void) {
+//        let url = "\(baseURL)movie/\(id)/images"
         
         AF
-            .request(url, headers: header)
+            .request(api.endpoint, headers: header)
             .responseDecodable(of: PosterModel.self) { response in
                 switch response.result {
                 case .success(let success):

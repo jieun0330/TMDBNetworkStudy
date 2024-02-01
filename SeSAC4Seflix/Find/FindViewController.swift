@@ -49,11 +49,16 @@ class FindViewController: UIViewController {
 
 extension FindViewController: UISearchBarDelegate  {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("-=-----")
-        TMDBAPIManager.shared.searchMovie(query: searchBar.text!) { movie in
+        
+        TMDBAPIManager.shared.fetchMovie(api: .search(query: searchBar.text!)) { movie in
             self.list = movie
             self.mainView.collectionView.reloadData()
         }
+        
+//        TMDBAPIManager.shared.searchMovie(api: <#TMDBAPI#>, query: searchBar.text!) { movie in
+//            self.list = movie
+//            self.mainView.collectionView.reloadData()
+//        }
     }
 }
 
@@ -74,6 +79,7 @@ extension FindViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let poster = item.poster {
             let url = URL(string: "https://image.tmdb.org/t/p/w500/\(poster)")
             cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
+            
 
         } else {
             cell.posterImageView.image = UIImage(systemName: "pencil")
