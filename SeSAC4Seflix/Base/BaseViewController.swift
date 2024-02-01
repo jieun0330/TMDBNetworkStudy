@@ -22,17 +22,17 @@ class BaseViewController: UIViewController {
     }
 
     func configureHierarchy() {
-        print(self, #function)
+//        print(self, #function)
 
     }
     
     func configureConstraints() {
-        print(self, #function)
+//        print(self, #function)
 
     }
     
     func configureView() {
-        print(self, #function)
+//        print(self, #function)
 
     }
     

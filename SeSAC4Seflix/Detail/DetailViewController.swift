@@ -19,6 +19,8 @@ class DetailViewController: BaseViewController {
     override func viewDidLoad() { // 이건 애플이 만들어준거고, 애플이 어떤걸 만들었는지 우리는 모름
         super.viewDidLoad() // 그래서 super 항시 호출하는게 맞음
         
+        print(self.label, #function)
+
     }
 
     // 자동생성됨 ㅁㅊㅁㅊㅁㅊ
