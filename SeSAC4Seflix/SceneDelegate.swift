@@ -21,8 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         // 스토리 기반 뷰컨 vs 코드 기반 뷰컨 이 약간 달랐다 하고 짚어넘어가~
-//        window?.rootViewController = HomeViewController()
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = SearchViewController()
+//        window?.rootViewController = WalkThroughViewController(transitionStyle: .scroll,
+//                                                               navigationOrientation: .horizontal)
         window?.makeKeyAndVisible()
     }
 

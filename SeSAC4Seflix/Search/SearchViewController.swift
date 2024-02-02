@@ -86,7 +86,7 @@ class SearchViewController: UIViewController {
         group.enter()
         
         TMDBAPIManager.shared.fetchMovieImages(api: .photo(id: 157336)) { poster in
-            self.imageList[1] = poster
+            self.imageList[0] = poster
             group.leave()
         }
         
@@ -101,7 +101,7 @@ class SearchViewController: UIViewController {
         group.enter()
         
         TMDBAPIManager.shared.fetchMovieImages(api: .photo(id: 11036)) { poster in
-            self.imageList[2] = poster
+            self.imageList[1] = poster
             group.leave()
         }
         
@@ -114,7 +114,7 @@ class SearchViewController: UIViewController {
         //        DispatchQueue.global().async(group: group) {
         group.enter()
         TMDBAPIManager.shared.fetchMovieImages(api: .photo(id: 46705)) { poster in
-            self.imageList[3] = poster
+            self.imageList[2] = poster
             group.leave()
         }
         
@@ -201,6 +201,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let item = imageList[collectionView.tag].posters[indexPath.item]
             
             let url = URL(string: "https://image.tmdb.org/t/p/w500/\(item.file_path)")
+            print(item.file_path)
             
             cell.posterImageView.kf.setImage(with: url, placeholder: UIImage(systemName: "star.fill"))
             cell.titleLabel.text = "임시!"

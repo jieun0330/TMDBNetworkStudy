@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2306D112B6C6B6600EB0A09 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2306D102B6C6B6600EB0A09 /* UIView+Extension.swift */; };
+		C2306D142B6C90D800EB0A09 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2306D132B6C90D800EB0A09 /* WalkThroughViewController.swift */; };
 		C26195592B6723D8003A49AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26195582B6723D8003A49AE /* AppDelegate.swift */; };
 		C261955B2B6723D8003A49AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261955A2B6723D8003A49AE /* SceneDelegate.swift */; };
 		C261955D2B6723D8003A49AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261955C2B6723D8003A49AE /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C2306D102B6C6B6600EB0A09 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		C2306D132B6C90D800EB0A09 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
 		C26195552B6723D8003A49AE /* SeSAC4Seflix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC4Seflix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26195582B6723D8003A49AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C261955A2B6723D8003A49AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2306D0F2B6C6B3E00EB0A09 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C2898B682B68CD8000AF9CE8 /* PosterModel.swift */,
+				C2306D102B6C6B6600EB0A09 /* UIView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C2306D122B6C90B500EB0A09 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				C2306D132B6C90D800EB0A09 /* WalkThroughViewController.swift */,
+			);
+			path = Intro;
+			sourceTree = "<group>";
+		};
 		C261954C2B6723D8003A49AE = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +130,8 @@
 		C26195572B6723D8003A49AE /* SeSAC4Seflix */ = {
 			isa = PBXGroup;
 			children = (
+				C2306D122B6C90B500EB0A09 /* Intro */,
+				C2306D0F2B6C6B3E00EB0A09 /* Extension */,
 				C2898BBB2B69F4CC00AF9CE8 /* Detail */,
 				C2898BB82B69F39100AF9CE8 /* Base */,
 				C2898BB52B69E2BF00AF9CE8 /* Find */,
@@ -164,7 +187,6 @@
 				C2898B5E2B6892A700AF9CE8 /* TMDBAPIManager.swift */,
 				C2898B622B68942100AF9CE8 /* APIKey.swift */,
 				C2898B642B6895AD00AF9CE8 /* TrendingModel.swift */,
-				C2898B682B68CD8000AF9CE8 /* PosterModel.swift */,
 				C2898BB32B69CE1F00AF9CE8 /* GCDViewController.swift */,
 				C29DEEC52B6B5F0F009AB30F /* TMDBAPI.swift */,
 			);
@@ -291,6 +313,7 @@
 				C2898B552B687F9500AF9CE8 /* SearchCollectionViewCell.swift in Sources */,
 				C261957E2B6743AC003A49AE /* PosterImageView.swift in Sources */,
 				C29DEEC42B6B364A009AB30F /* BaseView.swift in Sources */,
+				C2306D142B6C90D800EB0A09 /* WalkThroughViewController.swift in Sources */,
 				C261957A2B673B93003A49AE /* BlackRadiusTextField.swift in Sources */,
 				C2898BBD2B69F4DB00AF9CE8 /* DetailViewController.swift in Sources */,
 				C29DEEC62B6B5F0F009AB30F /* TMDBAPI.swift in Sources */,
@@ -299,6 +322,7 @@
 				C29DEEC02B6B2511009AB30F /* HomeView.swift in Sources */,
 				C2898B632B68942100AF9CE8 /* APIKey.swift in Sources */,
 				C2898B692B68CD8000AF9CE8 /* PosterModel.swift in Sources */,
+				C2306D112B6C6B6600EB0A09 /* UIView+Extension.swift in Sources */,
 				C261957C2B674230003A49AE /* BlackTextLabel.swift in Sources */,
 				C29DEEC22B6B31DD009AB30F /* FindView.swift in Sources */,
 				C2898B652B6895AD00AF9CE8 /* TrendingModel.swift in Sources */,

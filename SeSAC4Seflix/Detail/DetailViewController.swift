@@ -20,6 +20,7 @@ class DetailViewController: BaseViewController {
         super.viewDidLoad() // 그래서 super 항시 호출하는게 맞음
         
         print(self.label, #function)
+//        label.setBorder()
 
     }
 

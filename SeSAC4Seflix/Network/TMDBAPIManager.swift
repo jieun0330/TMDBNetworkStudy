@@ -10,6 +10,45 @@ import Alamofire
 
 class TMDBAPIManager {
     
+    func request<T: Decodable>(type: T.Type, api: TMDBAPI, completionHandler: @escaping ((T) -> Void)) {
+        
+        // url 주소도 아래꺼랑 3까지는 똑같음
+//        let url = "\(baseURL)trending/movie/week?language=ko-KR"
+        
+        
+        // parmaeters: HTTP Body, Query String
+        AF
+            .request(api.endpoint,
+                     method: api.method,
+                     parameters: api.parameter,
+                     // ???: 검색하는거니까 encoding이 필요한것같다
+                     encoding: URLEncoding(destination: .queryString),
+                     headers: api.header)
+            .responseDecodable(of: T.self) { response in
+                switch response.result {
+                case .success(let success):
+                    print("success", success)
+                    
+                    completionHandler(success) // 클로저 안에 클로저에 있는걸 꺼내기 위해서는 @escaping
+                    
+                case .failure(let failure):
+                    print("fail", failure)
+                }
+            }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // 싱글톤
     static let shared = TMDBAPIManager()
     // 아래 메서드 안에 있는 Header랑 반복되니까 하나로 합치는 작업을 해보자
@@ -65,6 +104,7 @@ class TMDBAPIManager {
             .request(api.endpoint,
                      method: api.method,
                      parameters: api.parameter,
+                     // ???: 검색하는거니까 encoding이 필요한것같다
                      encoding: URLEncoding(destination: .queryString),
                      headers: api.header)
             .responseDecodable(of: TrendingModel.self) { response in
@@ -89,6 +129,8 @@ class TMDBAPIManager {
             .responseDecodable(of: PosterModel.self) { response in
                 switch response.result {
                 case .success(let success):
+                    
+                    // ???: 
                     completionHandler(success)
                 case .failure(let failure):
                     print("fail", failure)
