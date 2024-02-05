@@ -42,6 +42,31 @@ class FindViewController: UIViewController {
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
         
+        print("1", Thread.isMainThread)
+        
+        
+        TMDBSessionManager.shared.fetchTrendingMovie { movie, error in
+            
+            print("2", Thread.isMainThread)
+            
+            if error == nil  { // 네트워크 통신이 성공했다는 의미
+                guard let movie = movie else { return }
+                
+
+                
+                self.list = movie.results
+                self.mainView.collectionView.reloadData()
+                // ❓❓❓❓❓❓ 메인이 해야할일을 뷰컨이 아니라 manager 안에 ㅇ넣어놓는다
+//                DispatchQueue.main.async {
+//                    self.mainView.collectionView.reloadData()
+//                }
+                
+                
+            } else {
+                // error 분기 처리, alert, toast message를 띄울거임 -> main에서 띄워줘야 함
+            }
+        }
+        
     }
 }
 
@@ -50,10 +75,10 @@ class FindViewController: UIViewController {
 extension FindViewController: UISearchBarDelegate  {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        TMDBAPIManager.shared.fetchMovie(api: .search(query: searchBar.text!)) { movie in
-            self.list = movie
-            self.mainView.collectionView.reloadData()
-        }
+//        TMDBAPIManager.shared.fetchMovie(api: .search(query: searchBar.text!)) { movie in
+//            self.list = movie
+//            self.mainView.collectionView.reloadData()
+//        }
         
 //        TMDBAPIManager.shared.searchMovie(api: <#TMDBAPI#>, query: searchBar.text!) { movie in
 //            self.list = movie

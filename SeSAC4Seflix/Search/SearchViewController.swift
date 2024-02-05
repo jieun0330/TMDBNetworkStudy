@@ -59,6 +59,8 @@ class SearchViewController: UIViewController {
         // 설명할 수 있어야 함
         
         
+        
+        
         // ARC가 뭐야
         let group = DispatchGroup() // +1 이라는 숫자를 갖게됨?
         
@@ -67,10 +69,45 @@ class SearchViewController: UIViewController {
         // 알바생이 또 다른 알바생을 품고있는거임
         
         group.enter() // 나 들어갈게? // +1 // 체크리스트라고 생각하면 됨 // 이거 해야됨 // 나 이거 할게~?
-        TMDBAPIManager.shared.fetchMovie(api: .trending) { movie in
-            self.list = movie
-            group.leave() // -1 // 끝냄 // 알바생한테 다 했다고 알려주는거임<#code#>
+        
+        TMDBAPIManager.shared.fetchMovie(api: .trending) { movie, error in
+            // movie와 error가 둘다 옵셔널이니까 그거 먼저 해결해주자
+                
+                // movie 0, error == nil
+                // 오류 없음 -> 네트워크 통신이 성공했을 것
+                // movie == nil, error 0
+                // 오류 있음 -> 네트워크 통신이 실패했을 것
+            
+            guard let error = error else {
+                return
+            }
+            guard let movie = movie else {
+                return
+            }
+            
+//            if let error == error {
+//                // 문제가 있는 상황
+//                // toast로 네트워크 통신에 문제가 있음을 알린다
+//            } else {
+//                guard let movie = movie else { return }
+//                // 그게 아니라면 movie에 값이 있을테니까
+//                self.list = movie
+//                // movie에 대한 처리를 담아줘서 처리한다
+//            }
+            
+            // 👩🏻‍🏫 네트워크 통신이 느리거나, 실패했을 경우, 모든 케이스를 잘 처리하고 있는지에 대한 질문이 많다, 네트워크 성공은 그냥 성공이니까
+            
+            group.leave()
+ 
         }
+
+//        
+//        TMDBAPIManager.shared.fetchMovie(api: .trending) { movie in
+//            self.list = movie
+//            group.leave() // -1 // 끝냄 // 알바생한테 다 했다고 알려주는거임<#code#>
+//        }
+        
+        // 🚨 네트워크 통신이 안됐을 때는 leave가 호출되지않고 notify가 호출되지않아서 작업이 영ㅇ영 끝나지않는다
         
         
 //        TMDBAPIManager.shared.fetchTrendingMovie { movie in
