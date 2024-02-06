@@ -42,6 +42,7 @@
 		C29DEEC42B6B364A009AB30F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DEEC32B6B364A009AB30F /* BaseView.swift */; };
 		C29DEEC62B6B5F0F009AB30F /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29DEEC52B6B5F0F009AB30F /* TMDBAPI.swift */; };
 		C2EEE4682B7069C00056C34C /* TMDBSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEE4672B7069C00056C34C /* TMDBSessionManager.swift */; };
+		C2EEE46B2B71B7EE0056C34C /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EEE46A2B71B7EE0056C34C /* NasaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		C29DEEC32B6B364A009AB30F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C29DEEC52B6B5F0F009AB30F /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
 		C2EEE4672B7069C00056C34C /* TMDBSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBSessionManager.swift; sourceTree = "<group>"; };
+		C2EEE46A2B71B7EE0056C34C /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				C2898BB32B69CE1F00AF9CE8 /* GCDViewController.swift */,
 				C29DEEC52B6B5F0F009AB30F /* TMDBAPI.swift */,
 				C2EEE4672B7069C00056C34C /* TMDBSessionManager.swift */,
+				C2EEE46A2B71B7EE0056C34C /* NasaViewController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				C26195812B67530D003A49AE /* SearchViewController.swift in Sources */,
 				C2898BB72B69E2EF00AF9CE8 /* FindViewController.swift in Sources */,
 				C2898BBA2B69F3A400AF9CE8 /* BaseViewController.swift in Sources */,
+				C2EEE46B2B71B7EE0056C34C /* NasaViewController.swift in Sources */,
 				C2898B5F2B6892A700AF9CE8 /* TMDBAPIManager.swift in Sources */,
 				C2898B552B687F9500AF9CE8 /* SearchCollectionViewCell.swift in Sources */,
 				C261957E2B6743AC003A49AE /* PosterImageView.swift in Sources */,

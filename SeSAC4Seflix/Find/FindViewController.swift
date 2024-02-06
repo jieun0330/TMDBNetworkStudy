@@ -64,6 +64,39 @@ class FindViewController: UIViewController {
                 
             } else {
                 // error 분기 처리, alert, toast message를 띄울거임 -> main에서 띄워줘야 함
+                switch error! { // SeSACError가 옵셔널이여서 error! 우선 강제 언랩핑 해놓긴 함
+                    
+                case SeSACError.failedRequest: print("")
+                default: print("")
+                }
+                
+                
+                var nickname: String? = "고래밥"
+//                var nickname: Optional<String> = "고래밥" // 위에랑 똑같져?
+                var list: [String] = ["1", "2"]
+//                var list: Array<String> = ["1", "2"] // 위에랑 똑같져? -> 제네릭
+                
+                switch error {
+//                    옵셔널은 열거형이다!? 
+//                    옵셔널 케이스는 두케이스로 나뉘어져있따
+                    
+                    // error가 옵셔널이여서 우선 error 자체를 옵셔널인지 아닌지를 확인하기 위해 이 두가지 구문이 나옴
+                case .none:
+                    <#code#>
+                case .some(let value):
+                    switch value  {
+                        
+                    case .failedRequest:
+                        <#code#>
+                    case .noData:
+                        <#code#>
+                    case .invalidResponse:
+                        <#code#>
+                    case .invalidData:
+                        <#code#>
+                    }
+                }
+                
             }
         }
         

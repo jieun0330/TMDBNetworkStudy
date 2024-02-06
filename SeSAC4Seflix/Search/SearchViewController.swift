@@ -225,7 +225,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Search", for: indexPath) as! SearchCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Search", for: indexPath) as? SearchCollectionViewCell else {
+            print("asdf")
+            return UICollectionViewCell()
+        }
         
         if self.collectionView == collectionView {
             let item = list[indexPath.item]

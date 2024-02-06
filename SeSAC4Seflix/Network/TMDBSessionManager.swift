@@ -15,8 +15,16 @@ enum SeSACError: Error {
     case invalidData
 }
 
+/*
+ typealias: 별칭
+ URLComponent
+ */
+
+
 class TMDBSessionManager {
     static let shared = TMDBSessionManager()
+    
+    typealias CompletionHandler = (TrendingModel?, SeSACError?) -> Void
     
     /*
      1. URLSessionConfiguration
@@ -28,14 +36,32 @@ class TMDBSessionManager {
      */
     
 //    func fetchTrendingMovie(completionHandler: @escaping (TrendingModel?, Error?) -> Void) {
-        func fetchTrendingMovie(completionHandler: @escaping (TrendingModel?, SeSACError?) -> Void) { // Error -> SeSACError
+    // ⭐️ URLSession은 사용법에 불과하니까 completionHandler 부분을 알고있는게 더 중요해요
+        func fetchTrendingMovie(completionHandler: @escaping CompletionHandler) { // Error -> SeSACError
 
         
         // 아래가 3번에 대한 내용이라는데
 //        URLSession(configuration: .default)
         // 👩🏻‍🏫 근데 configuration에 shared는 안나올까 ? -> shared는 싱글톤 패턴으로 이루어져있다
         
-        var url = URLRequest(url: TMDBAPI.trending.endpoint)
+        let link = "https://api.themoviedb.org/3/trending/movie/week?language=ko-KR&page=1"
+            
+        let scheme = "https"
+        let host = "api.themoviedb.org"
+        let path = "/3/trending/movie/week"      // ?가 시작되기 전까지
+        
+        var component = URLComponents()
+        component.scheme = scheme
+        component.host = host
+        component.path = path
+        component.queryItems = [
+            URLQueryItem(name: "page", value: "1"),
+            URLQueryItem(name: "language", value: "ko-KR")
+        ]   // 네트워크의 모든 내용 기반은 string이기 때문에 페이지=1 숫자 1은 문자열로 바껴서 전달된다
+            
+            
+            var url = URLRequest(url: component.url!)
+//        var url = URLRequest(url: TMDBAPI.trending.endpoint)
         // ❓❓❓❓❓ 인증키를 추가한거다 ~?
         url.addValue(APIKey.tmdb, forHTTPHeaderField: "Authorization")
         url.httpMethod = "GET"
@@ -54,7 +80,8 @@ class TMDBSessionManager {
             // 메인이 돌아와야되는 상황에 핸들링을 하지 않아서 생기는 문제? 
         URLSession.shared.dataTask(with: url) { data, response, error in
             
-            // 뷰컨에서 신경안쓰이게 만든다 ? 
+            // ⭐️ URLSession은 global이니까 안에는 main으로 하는게 더 중요하다 ?
+            // 뷰컨에서 신경안쓰이게 만든다 ?
             DispatchQueue.main.async {
                 // dataTask가 내부적으로 -> 네트워크 통신은 main thread가 하기엔 적절하지 않다는걸 애플이 알고있음
                 print("4", Thread.isMainThread)
@@ -89,6 +116,8 @@ class TMDBSessionManager {
                     print("네트워크 통신은 성공했지만, 응답값(ex.상태코드)이 오지 않음")
                     return
                 }
+                
+                //
                 
                 // http헤더에 있는 statuscode만 발라낸 작업 ?
                 // 상단에 있는 response 안에 statuscode가 들어있을테니 그에 맞는 상황을 처리 ?
